@@ -32,7 +32,7 @@ async function predictChurn() {
     try {
 
         const response = await fetch(
-            "https://telco-churn-ml.onrender.com/predict",
+            "/predict",
             {
                 method: "POST",
                 headers: {

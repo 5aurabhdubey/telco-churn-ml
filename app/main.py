@@ -1,5 +1,7 @@
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 from app.schemas import Customer
 from app.model import predict_churn
@@ -7,16 +9,18 @@ from app.model import predict_churn
 
 app = FastAPI(
     title="Telco Customer Churn Prediction API",
-    description="API for predicting telecom customer churn using XGBoost.",
+    description="AI-powered telecom customer churn prediction using XGBoost.",
     version="1.0.0"
 )
 
 
+# Serve CSS and JavaScript files
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+
 @app.get("/")
 def home():
-    return {
-        "message": "Telco Churn Prediction API is running"
-    }
+    return FileResponse("static/index.html")
 
 
 @app.get("/health")

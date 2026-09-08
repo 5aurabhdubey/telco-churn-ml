@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Telco Churn Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>📊 Telco Churn Predictor</h1>
+        <p>AI-powered customer churn prediction system</p>
+    </div>
+
+
+    <div class="card">
+
+        <h2>Customer Information</h2>
+
+        <div class="grid">
+
+            <div class="input-group">
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Senior Citizen</label>
+                <select id="SeniorCitizen">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Partner</label>
+                <select id="Partner">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Dependents</label>
+                <select id="Dependents">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Tenure (Months)</label>
+                <input type="number" id="tenure" value="12" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>Phone Service</label>
+                <select id="PhoneService">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Multiple Lines</label>
+                <select id="MultipleLines">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No phone service">No phone service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Internet Service</label>
+                <select id="InternetService">
+                    <option value="DSL">DSL</option>
+                    <option value="Fiber optic">Fiber optic</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Online Security</label>
+                <select id="OnlineSecurity">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Online Backup</label>
+                <select id="OnlineBackup">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Device Protection</label>
+                <select id="DeviceProtection">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Tech Support</label>
+                <select id="TechSupport">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Streaming TV</label>
+                <select id="StreamingTV">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Streaming Movies</label>
+                <select id="StreamingMovies">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No internet service">No internet service</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Contract</label>
+                <select id="Contract">
+                    <option value="Month-to-month">Month-to-month</option>
+                    <option value="One year">One year</option>
+                    <option value="Two year">Two year</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Paperless Billing</label>
+                <select id="PaperlessBilling">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Payment Method</label>
+                <select id="PaymentMethod">
+                    <option value="Electronic check">Electronic check</option>
+                    <option value="Mailed check">Mailed check</option>
+                    <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                    <option value="Credit card (automatic)">Credit card (automatic)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Monthly Charges ($)</label>
+                <input type="number" id="MonthlyCharges" value="70" step="0.01">
+            </div>
+
+            <div class="input-group">
+                <label>Total Charges ($)</label>
+                <input type="number" id="TotalCharges" value="840" step="0.01">
+            </div>
+
+        </div>
+
+
+        <button onclick="predictChurn()" id="predictButton">
+            🔮 Predict Churn
+        </button>
+
+    </div>
+
+
+    <div class="result-card hidden" id="resultCard">
+
+        <h2>Prediction Result</h2>
+
+        <div id="predictionText"></div>
+
+        <div class="probability-container">
+
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+
+            <h3 id="probabilityText"></h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
